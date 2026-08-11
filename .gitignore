@@ -6,7 +6,7 @@
 ._*
 
 # Custom folder icons
-Icon
+Icon
 
 # Volume root files
 .DocumentRevisions-V100
@@ -18,6 +18,9 @@ Icon
 .com.apple.timemachine.donotpresent
 
 ### Swift
+# Local API keys (copy from Secrets.plist.example)
+cn_Practice/Secrets.plist
+
 # Xcode user settings
 xcuserdata/
 

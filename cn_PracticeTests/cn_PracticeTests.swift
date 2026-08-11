@@ -27,6 +27,21 @@ struct cn_PracticeTests {
         #expect(amount.formatted == "$227.50")
     }
     
+    @Test func finnhubQuoteDecoding() throws {
+        let json = """
+        {"c":227.52,"d":-1.0,"dp":-0.44,"h":230,"l":226,"o":228,"pc":228.52,"t":1678886400}
+        """.data(using: .utf8)!
+        let quote = try JSONDecoder().decode(FinnhubQuote.self, from: json)
+        #expect(quote.currentPrice == 227.52)
+    }
+
+    @Test func hybridRepositoryRequiresAPIKey() async {
+        let repository = HybridAssetRepository()
+        await #expect(throws: AssetRepositoryError.self) {
+            try await repository.fetchAssets()
+        }
+    }
+
     @Test func failingRepositoryThrowsError() async {
         let repository = FailingAssetRepository()
 

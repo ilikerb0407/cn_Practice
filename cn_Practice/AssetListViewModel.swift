@@ -21,7 +21,7 @@ final class AssetListViewModel: ObservableObject {
 
     private let repository: AssetRepositoryProtocol
 
-    init(repository: AssetRepositoryProtocol = MockAssetRepository()) {
+    init(repository: AssetRepositoryProtocol = AssetRepositoryFactory.makeDefault()) {
         self.repository = repository
     }
 

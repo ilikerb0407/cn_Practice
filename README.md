@@ -1,3 +1,25 @@
+# cn_Practice
+
+SwiftUI 練習專案，面向 Ceno 跨境券商 Demo（美股 / 韓股 / 日股、多幣別）。
+
+## 真實資料設定（AAPL）
+
+AAPL 透過 [Finnhub](https://finnhub.io/) 拉取即時報價；005930（三星）、7203（豐田）目前仍用 Mock 資料。
+
+1. 到 [finnhub.io](https://finnhub.io/) 註冊並取得免費 API Key
+2. 複製設定檔：
+   ```bash
+   cp cn_Practice/Secrets.plist.example cn_Practice/Secrets.plist
+   ```
+3. 把 `Secrets.plist` 裡的 `YOUR_FINNHUB_API_KEY` 換成你的 key
+4. 重新 Run App，`AssetListView` 會顯示 AAPL 真實股價
+
+未設定 key 時會自動 fallback 到 `MockAssetRepository`（三檔皆為假資料）。
+
+也可在 Xcode Scheme → Run → Arguments → Environment Variables 設定 `FINNHUB_API_KEY`。
+
+---
+
 ## Performance Optimization: Avoiding Unnecessary Re-renders
 
 ### 問題場景
