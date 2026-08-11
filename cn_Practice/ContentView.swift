@@ -16,6 +16,21 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+        .task {
+            await testFetchAssets()
+        }
+    }
+
+    func testFetchAssets() async {
+        let repository = MockAssetRepository()
+        do {
+            let assets = try await repository.fetchAssets()
+            for asset in assets {
+                print("\(asset.symbol) - \(asset.name): \(asset.price.formatted)")
+            }
+        } catch {
+            print("Error: \(error)")
+        }
     }
 }
 

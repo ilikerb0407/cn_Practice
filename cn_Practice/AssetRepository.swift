@@ -26,3 +26,9 @@ struct MockAssetRepository: AssetRepositoryProtocol {
         ]
     }
 }
+
+struct FailingAssetRepository: AssetRepositoryProtocol {
+    func fetchAssets() async throws -> [Asset] {
+        throw URLError(.notConnectedToInternet)
+    }
+}
